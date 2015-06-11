@@ -4,7 +4,7 @@
 
 #include <limits.h>
 #if (CHAR_BIT != 8)
-#error Not supported at this time:  `char' that is not an octet.
+#error Not supported at this time:  `char` that is not an octet.
 #else
 typedef unsigned char           u8;
 #endif
