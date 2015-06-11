@@ -2,6 +2,14 @@
 #include <stdio.h>
 #include <string.h>
 
+/*
+ * Since we are bypassing the conventional C startup code for the entry point
+ * `main`, we cannot any longer safely approach the normal `return 0;` method
+ * of exiting main() as a proper function.  We require exit() or _exit() to
+ * guarantee proper C termination--exit() from <stdlib.h> is a safer bet.
+ */
+#include <stdlib.h>
+
 #include <limits.h>
 #if (CHAR_BIT != 8)
 #error Not supported at this time:  `char` that is not an octet.
@@ -65,14 +73,14 @@ int main(void)
     if (stream == NULL)
     {
         fputs("File write permission failure.\n", stderr);
-        return 1;
+        exit(EXIT_FAILURE);
     }
     elements_read = fwrite(conf, sizeof(conf), 1, stream);
     fclose(stream);
     if (elements_read != 1)
     {
         fputs("Disk write failed--file reset.\n", stderr);
-        return 1;
+        exit(EXIT_FAILURE);
     }
-    return 0;
+    exit(EXIT_SUCCESS);
 }
