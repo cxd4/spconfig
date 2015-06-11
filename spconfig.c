@@ -36,7 +36,7 @@ static u8 read_bit(void)
     } while (character == '\n');
     assert(character >= 0);
     bits = (unsigned int)character;
-    mask = (u8)(character & 1);
+    mask = (u8)(bits & 1);
     return (mask);
 }
 
