@@ -20,7 +20,6 @@ typedef unsigned char           u8;
 #define NUM_TASK_TYPES          2
 static u8 conf[32];
 
-static const char ask_HLE[] = "Simulate RSP %s from external plugin?";
 static const char* MBI_types[] = {
     "graphics",
     "audio",
@@ -56,7 +55,7 @@ int main(void)
 
     for (i = 0; i < NUM_TASK_TYPES; i++)
     {
-        printf(ask_HLE, MBI_types[i]);
+        printf("Simulate RSP %s from external plugin?", MBI_types[i]);
         conf[i] = read_bit();
     }
 
