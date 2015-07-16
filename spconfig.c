@@ -26,6 +26,8 @@ static const char* MBI_types[] = {
 #if (NUM_TASK_TYPES > 2)
     "video",
     "JPEG",
+ /* unknown:  type == 5 */
+    "HVQ",
     "HVQM",
 #endif
 };
