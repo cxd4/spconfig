@@ -11,10 +11,10 @@
 #include <stdlib.h>
 
 #include <limits.h>
-#if (CHAR_BIT != 8)
-#error Not supported at this time:  `char` that is not an octet.
-#else
+#if (CHAR_BIT == 8) & (UCHAR_MAX == 255)
 typedef unsigned char           u8;
+#else
+#error Not supported at this time:  `char` that is not an octet.
 #endif
 
 #define NUM_TASK_TYPES          2
