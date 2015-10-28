@@ -1,6 +1,10 @@
 # spconfig
 Configuration UI for the RSP plugin.
 
+## Purpose
+
+Writes user-requested configuration settings to `rsp_conf.bin`, which is used by the ["Static Interpreter"](https://github.com/cxd4/rsp) RSP emulation plugin.  Configuring the RSP plugin through the emulator's Options menu or the like will simply re-load and refresh the contents of `rsp_conf.bin` and apply its settings.
+
 ## Configuration
 
 Launch the EXE, and answer the questions either individually or all at once.
