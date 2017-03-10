@@ -12,8 +12,11 @@ FLAGS_ANSI="\
 
 C_FLAGS=$FLAGS_ANSI
 
-#ELF_FLAGS="-I/lib/ld-linux.so.2 --hash-style=gnu"
-ELF_FLAGS="-I/lib64/ld-linux-x86-64.so.2 --hash-style=gnu"
+if [ `uname -m` == 'x86_64' ]; then
+ELF_FLAGS="-I/lib64/ld-linux-x86-64.so.2"
+else
+ELF_FLAGS="-I/lib/ld-linux.so.2 "
+fi
 
 echo Compiling C source code...
 cc -o $obj/spconfig.s $src/spconfig.c -S $C_FLAGS
@@ -22,4 +25,4 @@ echo Assembling compiled sources...
 as -o $obj/spconfig.o $obj/spconfig.s
 
 echo Linking assembled object files...
-ld -o $obj/spconfig $obj/spconfig.o -lc -e main $ELF_FLAGS -s
+ld -o $obj/spconfig $obj/spconfig.o -lc -e main $ELF_FLAGS --hash-style=gnu -s
